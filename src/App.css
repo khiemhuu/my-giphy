@@ -1,34 +1,289 @@
-.app {
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;  
+  font-family: 'Geist Mono', monospace;
+  animation: slideIn 0.5s ease-in-out;
+
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+.search-container-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.search-container-filters {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+.search-container-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.search-container-filters span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5a5a5a;
+  font-family: 'Geist Mono', monospace;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #10a37f; 
+  margin: 0;
+}
+.search-container p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5a5a5a;
+  font-family: 'Geist Mono', monospace;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+}
+.search-container img {
+  width: 50px;
+}
+
+.gif {
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  object-fit: contain;
+  object-position: center;
+  padding: 1rem;
+}
+
+.showResult {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.no-result {
   text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #10a37f;
+  font-family: 'Geist Mono', monospace;
 }
 
-.app-logo {
-  width: 500px;
-  max-width: 90%;
-  pointer-events: none;
+.gif-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f7f7f8;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  background-color: #10a37f;
+  box-shadow: 0 1px 2px #10a37f;
+  position: relative;
 }
 
-.app-header {
+.gif-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gif-container:hover .gif-actions {
+  opacity: 1;
+}
+
+.gif-actions button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #10a37f;
+  color: white;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.gif-actions button:hover {
+  background-color: #0e8e70;
+}
+
+select {
+  width: 100%;
+  height: 45px;
+  padding: 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background-color: #f7f7f8;
+  color: #111827;
+  font-family: 'Geist Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  outline: none;
+  appearance: none;
+  margin-bottom: 1rem;
+}
+
+select:hover {
+  border-color: #ffffff;
+}
+
+select:focus {
+  border-color: #10a37f;
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.2);
+}
+
+select option {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* Trending section */
+.trending-section {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f7f7f8;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.trending-section h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #10a37f;
+  font-family: 'Geist Mono', monospace;
+}
+
+.trending-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.trending-btn {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #6b7280;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.trending-btn:hover {
+  border-color: #10a37f;
+  background-color: #10a37f;
+  color: white;
+}
+
+.trending-btn:active {
+  transform: translateY(0);
+}
+
+.gif-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.gif-button button {
+  background-color: #10a37f;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-family: 'Geist Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  color: rgb(255, 255, 255);
-  font-size: calc(10px + 2vmin);
-  background: linear-gradient(50deg, #fff 0%, #f4900e 50%, #ffeda7 100%);
+  padding: 2rem;
+  gap: 1rem;
 }
 
-.app-link {
-  color: #61dafb;
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #10a37f;
+  border-right: 3px solid #10a37f;
+  border-radius: 50%;
+  animation: spin 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-
-  to {
+  100% {
     transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  font-family: 'Geist Mono', monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
   }
 }
